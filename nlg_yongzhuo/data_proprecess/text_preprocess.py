@@ -42,7 +42,7 @@ def cut_sentence(sentence):
     :param sentence:str
     :return:list
     """
-    re_sen = re.compile('[:;!?。：；？！\n\r]')
+    re_sen = re.compile('[:;!?。：；？！\n\r]') #.不加是因为不确定.是小数还是英文句号(中文省略号......)
     sentences = re_sen.split(sentence)
     sen_cuts = []
     for sen in sentences:
@@ -59,6 +59,17 @@ def extract_chinese(text):
     """
     chinese_exttract = ''.join(re.findall(u"([\u4e00-\u9fa5A-Za-z0-9@. ])", text))
     return chinese_exttract
+
+
+def remove_urls(text):
+    """
+        删除https/http等无用url
+    :param text: str
+    :return: str
+    """
+    text_remove_url = re.sub(r'(全文：)?(https|http)?:\/\/(\w|\.|\/|\?|\=|\&|\%)*\b',
+                             '', text, flags=re.MULTILINE)
+    return text_remove_url
 
 
 def txt_read(file_path, encode_type='utf-8'):

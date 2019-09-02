@@ -15,6 +15,7 @@
         - topic_base
             - LDA
             - LSI
+            - NMF
 
 
 # run(运行, 以textrank为例)

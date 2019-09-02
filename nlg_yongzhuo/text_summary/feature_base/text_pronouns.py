@@ -32,8 +32,9 @@ CHAR_CHINESE = "\u4e00-\u9fa5"
 es_min = 1e-9
 
 
-class TextPronouns :
+class TextPronounsSum:
     def __init__(self):
+        self.algorithm = 'text_pronouns'
         self.stop_words = stop_words.values()
         self.len_ideal = 18 # 中心句子长度, 默认
 
@@ -184,15 +185,15 @@ class TextPronouns :
                 self.res_score.append([score_ngram, score_word_length_avg,
                                        score_length, score_posi, score_tag, self.sentences[i]])
             res_rank[self.sentences[i].strip()] = score_total
-            res_rank_sort = sorted(res_rank.items(), key=lambda rr: rr[1], reverse=True)
-            res_rank_sort_reverse = [(rrs[1], rrs[0]) for rrs in res_rank_sort]
+        res_rank_sort = sorted(res_rank.items(), key=lambda rr: rr[1], reverse=True)
+        res_rank_sort_reverse = [(rrs[1], rrs[0]) for rrs in res_rank_sort]
         return res_rank_sort_reverse
 
 
 
 if __name__ == '__main__':
     sen = "自然语言理解（NLU，Natural Language Understanding）: 使计算机理解自然语言（人类语言文字）等，重在理解。"
-    tp = TextPronouns()
+    tp = TextPronounsSum()
     docs ="和投票目标的等级来决定新的等级.简单的说。" \
           "是上世纪90年代末提出的一种计算网页权重的算法! " \
           "当时，互联网技术突飞猛进，各种网页网站爆炸式增长。" \

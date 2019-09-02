@@ -14,7 +14,7 @@ from nlg_yongzhuo.data.stop_words.stop_words import stop_words
 from collections import Counter
 
 
-class WordSignificance:
+class WordSignificanceSum:
     def __init__(self):
         """
         features:
@@ -23,6 +23,7 @@ class WordSignificance:
             3. Position of sentence
             4. Length of sentence
         """
+        self.algorithm = 'word_significance'
         self.stop_words = stop_words.values()
         self.num = 0
 
@@ -98,7 +99,7 @@ if __name__ == "__main__":
           "公告还披露，方直科技将探索在中小学教育、在线教育、非学历教育、学前教育、留学咨询等教育行业其他分支领域的投资。" \
           "方直科技2016年营业收入9691万元，营业利润1432万元，归属于普通股股东的净利润1847万元。（多知网 黎珊）}}"
 
-    ws = WordSignificance()
+    ws = WordSignificanceSum()
     res = ws.summarize(doc, num=6)
     for r in res:
         print(r)

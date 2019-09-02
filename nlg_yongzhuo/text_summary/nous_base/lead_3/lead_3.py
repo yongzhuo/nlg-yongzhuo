@@ -10,7 +10,7 @@ from nlg_yongzhuo.data_proprecess.text_preprocess import cut_sentence
 
 class Lead3:
     def __init__(self):
-        self.doc = None
+        self.algorithm = 'lead_3'
 
     def summarizer(self, doc, type='mix', topk=3):
         """
@@ -19,8 +19,7 @@ class Lead3:
         :param type: str, you can choose 'begin', 'end' or 'mix'
         :return: list
         """
-        self.doc = doc
-        sentences = cut_sentence(self.doc)
+        sentences = cut_sentence(doc)
         if len(sentences) < topk:
             return sentences
         if type=='begin':

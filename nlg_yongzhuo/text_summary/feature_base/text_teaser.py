@@ -14,8 +14,9 @@ from nlg_yongzhuo.data.stop_words.stop_words import stop_words
 from collections import Counter
 
 
-class TextTeaser:
+class TextTeaserSum:
     def __init__(self):
+        self.algorithm = 'text_teaser'
         self.stop_words = stop_words.values()
         self.len_ideal = 18 # 中心句子长度, 默认
 
@@ -155,7 +156,8 @@ class TextTeaser:
                 self.res_score.append(["score_total", "score_sbs", "score_dbs", "score_word", "score_length", "score_posi", "sentences"])
                 self.res_score.append([score_total, score_sbs, score_dbs, score_word, score_length, score_posi, self.sentences[i].strip()])
             res_rank[self.sentences[i].strip()] = score_total
-        return sorted(res_rank.items(), key=lambda rr:rr[1], reverse=True)
+        score_sen = [(rc[1], rc[0]) for rc in sorted(res_rank.items(), key=lambda d: d[1], reverse=True)]
+        return score_sen
 
 
 if __name__ == '__main__':
@@ -182,7 +184,7 @@ if __name__ == '__main__':
           "截止公告披露日，深圳嘉道谷投资管理有限公司股权结构如下:截止公告披露日，深圳嘉道功程股权投资基金产权结构如下:" \
           "公告还披露，方直科技将探索在中小学教育、在线教育、非学历教育、学前教育、留学咨询等教育行业其他分支领域的投资。" \
           "方直科技2016年营业收入9691万元，营业利润1432万元，归属于普通股股东的净利润1847万元。（多知网 黎珊）}}"
-    tt = TextTeaser()
+    tt = TextTeaserSum()
     res_ = tt.summarizer(doc)
     for res in res_:
         print(res)

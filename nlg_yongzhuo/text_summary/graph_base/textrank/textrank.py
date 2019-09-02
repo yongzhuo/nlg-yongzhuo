@@ -71,7 +71,7 @@ def textrank_tfidf(sentences, topk=6):
     return [(sr[1], sentences[sr[0]]) for sr in sen_rank][0:topk]
 
 
-class textrank:
+class TextRankSum:
     def __init__(self):
         self.algorithm = 'textrank'
 
@@ -104,7 +104,7 @@ if __name__ == '__main__':
 
     doc = doc.encode('utf-8').decode('utf-8')
 
-    tr = textrank()
+    tr = TextRankSum()
 
     score_ques = tr.summarize(doc, model_type="textrank_textrank4zh")# "text_rank_sklearn")
     for sq in score_ques:
