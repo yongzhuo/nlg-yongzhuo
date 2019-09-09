@@ -106,6 +106,6 @@ if __name__ == '__main__':
 
     tr = TextRankSum()
 
-    score_ques = tr.summarize(doc, model_type="textrank_textrank4zh")# "text_rank_sklearn")
+    score_ques = tr.summarize(doc, num=100, model_type="textrank_textrank4zh")# "text_rank_sklearn")
     for sq in score_ques:
         print(sq)

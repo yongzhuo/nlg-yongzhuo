@@ -18,7 +18,7 @@
       ** github项目中只是上传部分数据，需要的前往链接: https://pan.baidu.com/s/1I3vydhmFEQ9nuPG2fDou8Q 提取码: rket
 
 
-# 模型与论文paper题与地址
+# 模型与论文paper与地址
 * pagerank:     [The PageRank citation ranking: Bringing order to the Web. 1999](http://dbpubs.stanford.edu:8090/pub/showDoc.Fulltext?lang=en&doc=1999-66&format=pdf)
 * textrank:     [TextRank: Bringing Order into Texts](https://www.researchgate.net/publication/200042361_TextRank_Bringing_Order_into_Text)
 * textteaser:   [Automatic Text Summarization for Indonesian Language Using TextTeaser]
@@ -32,5 +32,6 @@
 * textteaser:   [https://github.com/IndigoResearch/textteaser](https://github.com/IndigoResearch/textteaser)
 * NaiveSumm:    [https://github.com/amsqr/NaiveSumm](https://github.com/amsqr/NaiveSumm)
 * ML主题模型:    [https://github.com/ljpzzz/machinelearning](https://github.com/ljpzzz/machinelearning)
+
 
 *希望对你有所帮助!
