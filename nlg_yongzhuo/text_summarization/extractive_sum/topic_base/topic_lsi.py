@@ -6,34 +6,11 @@
 # @paper    :Text summarization using Latent Semantic Analysis
 
 
-#
-from nlg_yongzhuo.data_proprecess.text_preprocess import extract_chinese
-from nlg_yongzhuo.data_proprecess.text_preprocess import cut_sentence
-from nlg_yongzhuo.data_proprecess.text_preprocess import jieba_cut
+from nlg_yongzhuo.data_preprocess.text_preprocess import extract_chinese, tfidf_fit
+from nlg_yongzhuo.data_preprocess.text_preprocess import cut_sentence, jieba_cut
 from nlg_yongzhuo.data.stop_words.stop_words import stop_words
 # sklearn
-from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.decomposition import TruncatedSVD
-
-
-def tfidf_fit(sentences):
-    """
-       tfidf相似度
-    :param sentences: 
-    :return: 
-    """
-    # tfidf计算
-    model = TfidfVectorizer(ngram_range=(1, 2), # 3,5
-                            stop_words=[' ', '\t', '\n'],  # 停用词
-                            max_features=10000,
-                            token_pattern=r"(?u)\b\w+\b",  # 过滤停用词
-                            min_df=1,
-                            max_df=0.9,
-                            use_idf=1,  # 光滑
-                            smooth_idf=1,  # 光滑
-                            sublinear_tf=1, )  # 光滑
-    matrix = model.fit_transform(sentences)
-    return matrix
 
 
 class LSISum:
@@ -82,6 +59,7 @@ class LSISum:
         score_sen = [(rc[1], rc[0]) for rc in sorted(res_combine.items(), key=lambda d: d[1], reverse=True)]
 
         return score_sen
+
 
 if __name__ == '__main__':
     lsi = LSISum()

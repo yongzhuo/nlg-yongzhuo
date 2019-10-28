@@ -9,6 +9,7 @@
         - graph_base
             - textrank(textrank4zh/gensim/sklearn)
         - festure_base
+            - mmr
             - text_pronouns
             - text_teaser
             - word_significance

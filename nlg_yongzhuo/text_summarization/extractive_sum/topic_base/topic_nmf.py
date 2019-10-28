@@ -5,9 +5,9 @@
 # @function :topic model of NMF
 
 
-from nlg_yongzhuo.data_proprecess.text_preprocess import extract_chinese
-from nlg_yongzhuo.data_proprecess.text_preprocess import cut_sentence
-from nlg_yongzhuo.data_proprecess.text_preprocess import jieba_cut
+from nlg_yongzhuo.data_preprocess.text_preprocess import extract_chinese
+from nlg_yongzhuo.data_preprocess.text_preprocess import cut_sentence
+from nlg_yongzhuo.data_preprocess.text_preprocess import jieba_cut
 from nlg_yongzhuo.data.stop_words.stop_words import stop_words
 # sklearn
 from sklearn.feature_extraction.text import TfidfVectorizer

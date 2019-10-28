@@ -7,10 +7,10 @@
 # @evaluate :bad, it is for english, and that's not clearly explain of formula
 
 
-from nlg_yongzhuo.data_proprecess.text_preprocess import jieba_cut, jieba_tag_cut
-from nlg_yongzhuo.data_proprecess.text_preprocess import gram_uni_bi_tri
-from nlg_yongzhuo.data_proprecess.text_preprocess import extract_chinese
-from nlg_yongzhuo.data_proprecess.text_preprocess import cut_sentence
+from nlg_yongzhuo.data_preprocess.text_preprocess import jieba_cut, jieba_tag_cut
+from nlg_yongzhuo.data_preprocess.text_preprocess import gram_uni_bi_tri
+from nlg_yongzhuo.data_preprocess.text_preprocess import extract_chinese
+from nlg_yongzhuo.data_preprocess.text_preprocess import cut_sentence
 from nlg_yongzhuo.data.stop_words.stop_words import stop_words
 import jieba.analyse as analyse
 from collections import Counter
@@ -220,4 +220,15 @@ if __name__ == '__main__':
     sums = tp.summarize(docs)
     for sum_ in sums:
         print(sum_)
+
+    ran_20 = range(20)
+    print(type(ran_20))
+    print(ran_20)
+    idx = [1,2,3]
+    idx.pop(1)
+    print(idx)
+    print(max([1,2,3,4]))
+
+
+
 

@@ -70,6 +70,7 @@ def predict_input():
         k = pd.Series(keywords(jieba.cut(ques)))
         print(k)
 
+
 if __name__ == '__main__':
     # 先训练, 然后再预测
     train_word2vec_by_word()

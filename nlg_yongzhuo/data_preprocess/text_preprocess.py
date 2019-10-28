@@ -5,6 +5,7 @@
 # @function :data utils of nlg-yongzhuo
 
 
+from sklearn.feature_extraction.text import TfidfVectorizer
 import jieba.posseg as pseg
 import pandas as pd
 import logging
@@ -181,6 +182,26 @@ def gram_uni_bi_tri(text):
         else:
             break
     return gram_uni, gram_bi, gram_tri
+
+
+def tfidf_fit(sentences):
+    """
+       tfidf相似度
+    :param sentences: 
+    :return: 
+    """
+    # tfidf计算
+    model = TfidfVectorizer(ngram_range=(1, 2), # 3,5
+                            stop_words=[' ', '\t', '\n'],  # 停用词
+                            max_features=10000,
+                            token_pattern=r"(?u)\b\w+\b",  # 过滤停用词
+                            min_df=1,
+                            max_df=0.9,
+                            use_idf=1,  # 光滑
+                            smooth_idf=1,  # 光滑
+                            sublinear_tf=1, )  # 光滑
+    matrix = model.fit_transform(sentences)
+    return matrix
 
 
 

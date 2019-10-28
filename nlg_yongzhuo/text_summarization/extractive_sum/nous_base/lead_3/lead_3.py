@@ -5,7 +5,7 @@
 # @function :text_summary with lead-3
 
 
-from nlg_yongzhuo.data_proprecess.text_preprocess import cut_sentence
+from nlg_yongzhuo.data_preprocess.text_preprocess import cut_sentence
 
 
 class Lead3:
