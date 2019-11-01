@@ -105,7 +105,7 @@ class TextTeaserSum:
         len_title_word = len(self.title)
         return (len_mix_word + 1.0) / (len_mix_word + 2.0) / len_title_word
 
-    def summarizer(self, text, title=None):
+    def summarize(self, text, num=6, title=None):
         # 切句
         if type(text) == str:
             self.sentences = cut_sentence(text)
@@ -156,7 +156,9 @@ class TextTeaserSum:
                 self.res_score.append(["score_total", "score_sbs", "score_dbs", "score_word", "score_length", "score_posi", "sentences"])
                 self.res_score.append([score_total, score_sbs, score_dbs, score_word, score_length, score_posi, self.sentences[i].strip()])
             res_rank[self.sentences[i].strip()] = score_total
-        score_sen = [(rc[1], rc[0]) for rc in sorted(res_rank.items(), key=lambda d: d[1], reverse=True)]
+        # 最小句子数
+        num_min = min(num, int(len(self.word_count) * 0.6))
+        score_sen = [(rc[1], rc[0]) for rc in sorted(res_rank.items(), key=lambda d: d[1], reverse=True)][0:num_min]
         return score_sen
 
 
@@ -185,7 +187,7 @@ if __name__ == '__main__':
           "公告还披露，方直科技将探索在中小学教育、在线教育、非学历教育、学前教育、留学咨询等教育行业其他分支领域的投资。" \
           "方直科技2016年营业收入9691万元，营业利润1432万元，归属于普通股股东的净利润1847万元。（多知网 黎珊）}}"
     tt = TextTeaserSum()
-    res_ = tt.summarizer(doc)
+    res_ = tt.summarize(doc)
     for res in res_:
         print(res)
     gg = 0

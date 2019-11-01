@@ -8,9 +8,9 @@
 from nlg_yongzhuo.data_preprocess.text_preprocess import extract_chinese, cut_sentence
 from nlg_yongzhuo.data_preprocess.text_preprocess import jieba_cut,tfidf_fit
 from nlg_yongzhuo.data.stop_words.stop_words import stop_words
-# sklearn
-from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+# # sklearn
+# from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+# from sklearn.metrics.pairwise import cosine_similarity
 import copy
 
 

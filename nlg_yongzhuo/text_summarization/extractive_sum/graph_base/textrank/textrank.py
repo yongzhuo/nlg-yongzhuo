@@ -8,6 +8,7 @@
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from gensim.summarization.summarizer import summarize
+from nlg_yongzhuo.text_summarization.extractive_sum.graph_base.textrank.textrank_gensim import TextrankGensimSum
 from textrank4zh import TextRank4Sentence
 import networkx as nx
 import jieba
@@ -17,6 +18,8 @@ import re
 # textrank of textrank4zh
 tr4s = TextRank4Sentence()
 
+# textrank of gensim
+trgs = TextrankGensimSum()
 
 # textrank of sklearn
 def cut_sentence(sentence):
@@ -82,10 +85,10 @@ class TextRankSum:
             res = []
             for item in key_tr4s:
                 res.append((item.weight, item.sentence))
-        elif model_type=="text_rank_sklearn":
+        elif model_type=="textrank_sklearn":
             res = textrank_tfidf(doc, topk=num)
         elif model_type=="textrank_gensim":
-            res = summarize(doc, ratio=0.3, split=True)
+            res = trgs.summarize(doc, num=num)
         else:
             raise RuntimeError(" model_type must be 'textrank_textrank4zh', 'text_rank_sklearn' or 'textrank_gensim' ")
 
@@ -94,18 +97,24 @@ class TextRankSum:
 
 if __name__ == '__main__':
 
-    doc = "文本生成NLG，不同于文本理解NLU（例如分词、词向量、分类、实体提取），" \
-          "是重在文本生成的另一种关键技术（常用的有翻译、摘要、同义句生成等）。" \
-          "传统的文本生成NLG任务主要是抽取式的，生成式的方法看起来到现在使用也没有那么普遍。" \
-          "现在，我记录的是textrank，一种使用比较广泛的抽取式关键句提取算法。" \
-          "版权声明：本文为CSDN博主「大漠帝国」的原创文章，遵循CC 4.0 by-sa版权协议，" \
-          "转载请附上原文出处链接及本声明。原文链接：https://blog.csdn.net/rensihui" \
-          "/article/details/98530760"
+    doc = "和投票目标的等级来决定新的等级.简单的说。" \
+           "是上世纪90年代末提出的一种计算网页权重的算法!" \
+           "当时，互联网技术突飞猛进，各种网页网站爆炸式增长。" \
+           "业界急需一种相对比较准确的网页重要性计算方法。" \
+           "是人们能够从海量互联网世界中找出自己需要的信息。" \
+           "百度百科如是介绍他的思想:PageRank通过网络浩瀚的超链接关系来确定一个页面的等级。" \
+           "Google把从A页面到B页面的链接解释为A页面给B页面投票。" \
+           "Google根据投票来源甚至来源的来源，即链接到A页面的页面。" \
+           "一个高等级的页面可以使其他低等级页面的等级提升。" \
+           "具体说来就是，PageRank有两个基本思想，也可以说是假设。" \
+           "即数量假设：一个网页被越多的其他页面链接，就越重）。" \
+           "质量假设：一个网页越是被高质量的网页链接，就越重要。" \
+           "总的来说就是一句话，从全局角度考虑，获取重要的信。"
 
     doc = doc.encode('utf-8').decode('utf-8')
 
     tr = TextRankSum()
 
-    score_ques = tr.summarize(doc, num=100, model_type="textrank_textrank4zh")# "text_rank_sklearn")
+    score_ques = tr.summarize(doc, num=100, model_type="textrank_gensim") # "text_rank_sklearn")
     for sq in score_ques:
         print(sq)

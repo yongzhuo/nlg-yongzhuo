@@ -8,11 +8,11 @@
 from nlg_yongzhuo.data_preprocess.text_preprocess import cut_sentence
 
 
-class Lead3:
+class Lead3Sum:
     def __init__(self):
         self.algorithm = 'lead_3'
 
-    def summarizer(self, doc, type='mix', topk=3):
+    def summarize(self, doc, type='mix', num=3):
         """
             lead-s
         :param sentences: list
@@ -20,15 +20,24 @@ class Lead3:
         :return: list
         """
         sentences = cut_sentence(doc)
-        if len(sentences) < topk:
+        if len(sentences) < num:
             return sentences
+        # 最小句子数
+        num_min = min(num, int(len(sentences) * 0.6))
         if type=='begin':
-            summers = sentences[0:topk]
+            summers = sentences[0:num]
         elif type=='end':
-            summers = sentences[-topk:]
+            summers = sentences[-num:]
         else:
-            summers = [sentences[0]] + [sentences[-1]] + sentences[1:topk-1]
-        return summers
+            summers = [sentences[0]] + [sentences[-1]] + sentences[1:num-1]
+        summers_s = {}
+        for i in range(len(summers)): # 得分计算
+            if len(summers) - i == 1:
+                summers_s[summers[i]] = (num - 0.75) / (num + 1)
+            else:
+                summers_s[summers[i]] = (num - i - 0.5) / (num + 1)
+        score_sen = [(rc[1], rc[0]) for rc in sorted(summers_s.items(), key=lambda d: d[1], reverse=True)][0:num_min]
+        return score_sen
 
 
 if __name__ == '__main__':
@@ -47,6 +56,6 @@ if __name__ == '__main__':
           "质量假设：一个网页越是被高质量的网页链接，就越重要。" \
           "总的来说就是一句话，从全局角度考虑，获取重要的信息。"
     doc = doc.encode('utf-8').decode('utf-8')
-    l3 = Lead3()
-    for score_sen in l3.summarizer(doc):
+    l3 = Lead3Sum()
+    for score_sen in l3.summarize(doc, type='mix', num=3):
         print(score_sen)

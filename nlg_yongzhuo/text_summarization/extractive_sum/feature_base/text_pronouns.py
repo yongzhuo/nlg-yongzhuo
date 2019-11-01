@@ -111,7 +111,7 @@ class TextPronounsSum:
         len_title_word = len(self.title)
         return (len_mix_word + 1.0) / (len_mix_word + 2.0) / len_title_word
 
-    def summarize(self, text, title=None):
+    def summarize(self, text, num=6, title=None):
         """
             文本句子排序
         :param docs: list
@@ -185,8 +185,10 @@ class TextPronounsSum:
                 self.res_score.append([score_ngram, score_word_length_avg,
                                        score_length, score_posi, score_tag, self.sentences[i]])
             res_rank[self.sentences[i].strip()] = score_total
+        # 最小句子数
+        num_min = min(num, int(len(self.word_count) * 0.6))
         res_rank_sort = sorted(res_rank.items(), key=lambda rr: rr[1], reverse=True)
-        res_rank_sort_reverse = [(rrs[1], rrs[0]) for rrs in res_rank_sort]
+        res_rank_sort_reverse = [(rrs[1], rrs[0]) for rrs in res_rank_sort][0:num_min]
         return res_rank_sort_reverse
 
 
