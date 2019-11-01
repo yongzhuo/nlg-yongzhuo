@@ -3,7 +3,7 @@
 # Install(安装)
 
 ```bash
-pip install Keras-TextClassification
+pip install nlg-yongzhuo
 ```
 
 # Train&Usage(调用),详情见/test/目录下
@@ -28,21 +28,24 @@ docs ="和投票目标的等级来决定新的等级.简单的说。" \
           "即数量假设：一个网页被越多的其他页面链接，就越重）。" \
           "质量假设：一个网页越是被高质量的网页链接，就越重要。" \
           "总的来说就是一句话，从全局角度考虑，获取重要的信。"
+# 1. word_significance
 sums_word_significance = word_significance.summarize(docs, num=6)
 print("word_significance:")
 for sum_ in sums_word_significance:
     print(sum_)
 
+# 2. text_pronouns
 sums_text_pronouns = text_pronouns.summarize(docs, num=6)
 print("text_pronouns:")
 for sum_ in sums_text_pronouns:
     print(sum_)
 
+3. text_teaser
 sums_text_teaser = text_teaser.summarize(docs, num=6)
 print("text_teaser:")
 for sum_ in sums_text_teaser:
     print(sum_)
-
+4. mmr
 sums_mmr = mmr.summarize(docs, num=6)
 print("mmr:")
 for sum_ in sums_mmr:
