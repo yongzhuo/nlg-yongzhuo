@@ -40,12 +40,12 @@ print("text_pronouns:")
 for sum_ in sums_text_pronouns:
     print(sum_)
 
-3. text_teaser
+# 3. text_teaser
 sums_text_teaser = text_teaser.summarize(docs, num=6)
 print("text_teaser:")
 for sum_ in sums_text_teaser:
     print(sum_)
-4. mmr
+# 4. mmr
 sums_mmr = mmr.summarize(docs, num=6)
 print("mmr:")
 for sum_ in sums_mmr:
