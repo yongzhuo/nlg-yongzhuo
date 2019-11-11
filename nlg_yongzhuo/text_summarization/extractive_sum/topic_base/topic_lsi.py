@@ -19,7 +19,7 @@ class LSISum:
         self.stop_words = stop_words.values()
         self.algorithm = 'lsi'
 
-    def summarize(self, text, num=8, topic_min=5, judge_topic=None):
+    def summarize(self, text, num=8, topic_min=5, judge_topic='all'):
         """
             
         :param text: 
@@ -45,7 +45,7 @@ class LSISum:
         # 主题数, 经验判断
         topic_num = min(topic_min, int(len(sentences_cut)/2))  # 设定最小主题数为3
         svd_tfidf = TruncatedSVD(n_components=topic_num, n_iter=32)
-        res_svd_u = svd_tfidf.fit_transform(sen_tfidf)
+        res_svd_u = svd_tfidf.fit_transform(sen_tfidf.T)
         res_svd_v = svd_tfidf.components_
 
         if judge_topic:

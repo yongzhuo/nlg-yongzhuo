@@ -50,7 +50,7 @@ class LDASum:
                                         learning_method='online',
                                         learning_offset=50.,
                                         random_state=2019)
-        res_lda_u = lda.fit_transform(tf_ngram)
+        res_lda_u = lda.fit_transform(tf_ngram.T)
         res_lda_v = lda.components_
 
         if judge_topic:
