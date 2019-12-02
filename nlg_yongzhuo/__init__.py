@@ -34,3 +34,6 @@ lead3 = Lead3Sum()
 lda = LDASum()
 lsi = LSISum()
 nmf = NMFSum()
+
+# centeoid_base
+

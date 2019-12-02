@@ -1,4 +1,12 @@
-# nlg-yongzhuo
+# [nlg-yongzhuo](https://github.com/yongzhuo/nlg-yongzhuo)
+
+[![PyPI](https://img.shields.io/pypi/v/nlg-yongzhuo)](https://pypi.org/project/nlg-yongzhuo/)
+[![Build Status](https://travis-ci.com/yongzhuo/nlg-yongzhuo.svg?branch=master)](https://travis-ci.com/yongzhuo/nlg-yongzhuo)
+[![PyPI_downloads](https://img.shields.io/pypi/dm/nlg-yongzhuo)](https://pypi.org/project/nlg-yongzhuo/)
+[![Stars](https://img.shields.io/github/stars/yongzhuo/nlg-yongzhuo?style=social)](https://github.com/yongzhuo/nlg-yongzhuo/stargazers)
+[![Forks](https://img.shields.io/github/forks/yongzhuo/nlg-yongzhuo.svg?style=social)](https://github.com/yongzhuo/nlg-yongzhuo/network/members)
+[![Join the chat at https://gitter.im/yongzhuo/nlg-yongzhuo](https://badges.gitter.im/yongzhuo/nlg-yongzhuo.svg)](https://gitter.im/yongzhuo/nlg-yongzhuo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 
 # Install(安装)
 

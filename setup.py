@@ -25,7 +25,7 @@ with codecs.open('requirements.txt', 'r', 'utf8') as reader:
     install_requires = list(map(lambda x: x.strip(), reader.readlines()))
 
 setup(name=NAME,
-        version='0.0.1',
+        version='0.0.3',
         description=DESCRIPTION,
         long_description=long_description,
         long_description_content_type="text/markdown",
@@ -63,3 +63,14 @@ if __name__ == "__main__":
 
 # python setup.py bdist_wheel --universal
 # twine upload dist/*
+
+
+# python web部署常见方式
+# 1. gunicorn
+# 2. uwsgi
+# 3. FastCGI
+# 4. WSGI
+# 5. Tornado, Flask, FastAPI
+# 6. Http
+# 7. wsgiref
+# 8. cgi, mod_wsgi

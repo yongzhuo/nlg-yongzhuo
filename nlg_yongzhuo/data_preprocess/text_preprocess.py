@@ -207,7 +207,7 @@ def tfidf_fit(sentences):
 
 if __name__ == '__main__':
     text = "你喜欢谁,小老弟,你好烦哇。"
-    gg = jieba_tag_cut("我喜欢你,yx")
+    gg = jieba_tag_cut("我不再喜欢你，正如你的不喜欢我")
     grams = gram_uni_bi_tri(text)
     print(gg)
     print(grams)
