@@ -78,17 +78,17 @@ class TextRankSum:
     def __init__(self):
         self.algorithm = 'textrank'
 
-    def summarize(self, doc, num=6, model_type="textrank_textrank4zh"):
+    def summarize(self, text, num=6, model_type="textrank_textrank4zh"):
         if model_type=="textrank_textrank4zh":
-            tr4s.analyze(text=doc, lower=True, source='all_filters')
+            tr4s.analyze(text=text, lower=True, source='all_filters')
             key_tr4s = tr4s.get_key_sentences(num=num)
             res = []
             for item in key_tr4s:
                 res.append((item.weight, item.sentence))
         elif model_type=="textrank_sklearn":
-            res = textrank_tfidf(doc, topk=num)
+            res = textrank_tfidf(text, topk=num)
         elif model_type=="textrank_gensim":
-            res = trgs.summarize(doc, num=num)
+            res = trgs.summarize(text, num=num)
         else:
             raise RuntimeError(" model_type must be 'textrank_textrank4zh', 'text_rank_sklearn' or 'textrank_gensim' ")
 

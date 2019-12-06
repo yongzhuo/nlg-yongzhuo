@@ -13,16 +13,16 @@
 #        Variations of the Similarity Function of TextRank for Automated Summarization,
 #        https://arxiv.org/abs/1602.03606
 
-import logging
-from gensim.utils import deprecated
-from gensim.summarization.pagerank_weighted import pagerank_weighted as _pagerank
-from gensim.summarization.textcleaner import clean_text_by_sentences as _clean_text_by_sentences
-from gensim.summarization.commons import build_graph as _build_graph
+
 from gensim.summarization.commons import remove_unreachable_nodes as _remove_unreachable_nodes
+from gensim.summarization.pagerank_weighted import pagerank_weighted as _pagerank
+from gensim.summarization.commons import build_graph as _build_graph
 from gensim.summarization.bm25 import iter_bm25_bow as _bm25_weights
 from gensim.corpora import Dictionary
+from gensim.utils import deprecated
 from math import log10 as _log10
 from six.moves import range
+import logging
 
 
 INPUT_MIN_LENGTH = 10
