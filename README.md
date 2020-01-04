@@ -17,10 +17,19 @@ pip install nlg-yongzhuo
 # Train&Usage(调用),详情见/test/目录下
 ```bash
 
+# feature_base
 from nlg_yongzhuo import word_significance
 from nlg_yongzhuo import text_pronouns
 from nlg_yongzhuo import text_teaser
 from nlg_yongzhuo import mmr
+# graph_base
+from nlg_yongzhuo import text_rank
+# topic_base
+from nlg_yongzhuo import lda
+from nlg_yongzhuo import lsi
+from nlg_yongzhuo import nmf
+# nous_base
+from nlg_yongzhuo import lead3
 
 
 docs ="和投票目标的等级来决定新的等级.简单的说。" \
@@ -58,6 +67,31 @@ sums_mmr = mmr.summarize(docs, num=6)
 print("mmr:")
 for sum_ in sums_mmr:
     print(sum_)
+# 5.text_rank
+sums_text_rank = text_rank.summarize(docs, num=6)
+print("text_rank:")
+for sum_ in sums_text_rank:
+    print(sum_)
+# 6. lda
+sums_lda = lda.summarize(docs, num=6)
+print("lda:")
+for sum_ in sums_lda:
+    print(sum_)
+# 7. lsi
+sums_lsi = lsi.summarize(docs, num=6)
+print("mmr:")
+for sum_ in sums_lsi:
+    print(sum_)
+# 8. nmf
+sums_nmf = nmf.summarize(docs, num=6)
+print("nmf:")
+for sum_ in sums_nmf:
+    print(sum_)
+# 9. lead3
+sums_lead3 = lead3.summarize(docs, num=6)
+print("lead3:")
+for sum_ in sums_lead3:
+    print(sum_)
 
 ```
 
@@ -74,9 +108,10 @@ for sum_ in sums_mmr:
 
 
 # nlg_yongzhuo/data
-    - 数据下载
-      ** github项目中只是上传部分数据，需要的前往链接: https://pan.baidu.com/s/1I3vydhmFEQ9nuPG2fDou8Q 提取码: rket
-
+  * 哈工大的新浪微博短文本摘要[LCSTS](http://icrc.hitsz.edu.cn/Article/show/139.html)
+  * 教育新闻自动摘要语料[chinese_abstractive_corpus](https://github.com/wonderfulsuccess/chinese_abstractive_corpus)
+  * NLPCC 2017 task3[Single Document Summarization](http://tcci.ccf.org.cn/conference/2017/taskdata.php)
+  * 娱乐新闻等[“神策杯”2018高校算法大师赛 ](https://www.dcjingsai.com/common/cmpt/%E2%80%9C%E7%A5%9E%E7%AD%96%E6%9D%AF%E2%80%9D2018%E9%AB%98%E6%A0%A1%E7%AE%97%E6%B3%95%E5%A4%A7%E5%B8%88%E8%B5%9B_%E7%AB%9E%E8%B5%9B%E4%BF%A1%E6%81%AF.html)
 
 # 模型与论文paper与地址
 * pagerank:     [The PageRank citation ranking: Bringing order to the Web. 1999](http://dbpubs.stanford.edu:8090/pub/showDoc.Fulltext?lang=en&doc=1999-66&format=pdf)
