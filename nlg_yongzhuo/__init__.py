@@ -35,5 +35,6 @@ lda = LDASum()
 lsi = LSISum()
 nmf = NMFSum()
 
-# centeoid_base
+# merge of text_summary
+from nlg_yongzhuo.text_summarization.extractive_sum.text_summary_merge import text_summarize
 

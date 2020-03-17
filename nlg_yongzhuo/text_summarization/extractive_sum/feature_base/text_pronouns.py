@@ -14,7 +14,6 @@ from nlg_yongzhuo.data_preprocess.text_preprocess import cut_sentence
 from nlg_yongzhuo.data.stop_words.stop_words import stop_words
 import jieba.analyse as analyse
 from collections import Counter
-import re
 
 
 # jieba预训练好的idf值

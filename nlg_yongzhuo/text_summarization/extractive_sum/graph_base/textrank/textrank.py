@@ -5,14 +5,13 @@
 # @function :textrank of textrank4zh, sklearn or gensim
 
 
+from nlg_yongzhuo.text_summarization.extractive_sum.graph_base.textrank.textrank_gensim import TextrankGensimSum
+from nlg_yongzhuo.data_preprocess.text_preprocess import cut_sentence
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.feature_extraction.text import TfidfVectorizer
-from gensim.summarization.summarizer import summarize
-from nlg_yongzhuo.text_summarization.extractive_sum.graph_base.textrank.textrank_gensim import TextrankGensimSum
 from textrank4zh import TextRank4Sentence
 import networkx as nx
 import jieba
-import re
 
 
 # textrank of textrank4zh
@@ -21,16 +20,7 @@ tr4s = TextRank4Sentence()
 # textrank of gensim
 trgs = TextrankGensimSum()
 
-# textrank of sklearn
-def cut_sentence(sentence):
-    """
-        分句
-    :param sentence:str
-    :return:list
-    """
-    re_sen = re.compile('[.。？！?!\n\r]')
-    sentences = re_sen.split(sentence)
-    return sentences
+
 def tdidf_sim(sentences):
     """
        tfidf相似度
@@ -51,6 +41,7 @@ def tdidf_sim(sentences):
     matrix = model.fit_transform(sentences)
     matrix_norm = TfidfTransformer().fit_transform(matrix)
     return matrix_norm
+
 def textrank_tfidf(sentences, topk=6):
     """
         使用tf-idf作为相似度, networkx.pagerank获取中心句子作为摘要
@@ -78,7 +69,7 @@ class TextRankSum:
     def __init__(self):
         self.algorithm = 'textrank'
 
-    def summarize(self, text, num=6, model_type="textrank_textrank4zh"):
+    def summarize(self, text, num=6, model_type="textrank_gensim"):
         if model_type=="textrank_textrank4zh":
             tr4s.analyze(text=text, lower=True, source='all_filters')
             key_tr4s = tr4s.get_key_sentences(num=num)

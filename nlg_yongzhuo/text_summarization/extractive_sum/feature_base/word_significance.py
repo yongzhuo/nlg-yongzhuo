@@ -27,7 +27,7 @@ class WordSignificanceSum:
         self.stop_words = stop_words.values()
         self.num = 0
 
-    def summarize(self, text, num=8):
+    def summarize(self, text, num=6):
         """
             根据词语意义确定中心句
         :param text: str
@@ -53,7 +53,7 @@ class WordSignificanceSum:
         self.word_count = dict(Counter(self.words))
         self.word_count_rank = sorted(self.word_count.items(), key=lambda f: f[1], reverse=True)
         # 最小句子数
-        num_min = min(num, int(len(self.word_count)*0.6))
+        num_min = min(num, len(self.sentences))
         # 词语排序, 按照词频
         self.word_rank = [wcr[0] for wcr in self.word_count_rank][0:num_min]
         res_sentence = []
@@ -100,7 +100,7 @@ if __name__ == "__main__":
           "方直科技2016年营业收入9691万元，营业利润1432万元，归属于普通股股东的净利润1847万元。（多知网 黎珊）}}"
 
     ws = WordSignificanceSum()
-    res = ws.summarize(doc, num=6)
+    res = ws.summarize(doc, num=100)
     for r in res:
         print(r)
 

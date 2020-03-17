@@ -12,18 +12,18 @@ class Lead3Sum:
     def __init__(self):
         self.algorithm = 'lead_3'
 
-    def summarize(self, doc, type='mix', num=3):
+    def summarize(self, text, type='mix', num=3):
         """
             lead-s
         :param sentences: list
         :param type: str, you can choose 'begin', 'end' or 'mix'
         :return: list
         """
-        sentences = cut_sentence(doc)
+        sentences = cut_sentence(text)
         if len(sentences) < num:
             return sentences
         # 最小句子数
-        num_min = min(num, int(len(sentences) * 0.6))
+        num_min = min(num, len(sentences))
         if type=='begin':
             summers = sentences[0:num]
         elif type=='end':

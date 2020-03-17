@@ -79,7 +79,7 @@ class LSISum:
                 res_row_i_argmax = np.argmax(res_row_i)
                 res_combine[self.sentences[i]] = res_row_i[res_row_i_argmax]
             score_sen = [(rc[1], rc[0]) for rc in sorted(res_combine.items(), key=lambda d: d[1], reverse=True)]
-        num_min = min(num, int(len_sentences_cut * 0.6))
+        num_min = min(num, len(self.sentences))
         return score_sen[0:num_min]
 
 

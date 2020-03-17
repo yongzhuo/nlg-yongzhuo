@@ -32,7 +32,7 @@ WEIGHT_THRESHOLD = 1.e-3
 logger = logging.getLogger(__name__)
 
 
-from nlg_yongzhuo.data_preprocess.text_preprocess import extract_chinese
+# from nlg_yongzhuo.data_preprocess.text_preprocess import extract_chinese
 from nlg_yongzhuo.data_preprocess.text_preprocess import cut_sentence
 from nlg_yongzhuo.data_preprocess.text_preprocess import jieba_cut
 from nlg_yongzhuo.data.stop_words.stop_words import stop_words
@@ -64,7 +64,7 @@ class TextrankGensimSum:
                 sentences_score[sentences[count]] = most_important_docs[tuple_cor]
                 count += 1
             # 最小句子数
-            num_min = min(num, int(len(sentences) * 0.6))
+            num_min = min(num, len(sentences))
             score_sen = [(rc[1], rc[0]) for rc in sorted(sentences_score.items(),
                                                          key=lambda d: d[1], reverse=True)][0:num_min]
             return score_sen
