@@ -1,7 +1,7 @@
 # nlg-yongzhuo
 
 
-# nlg_yongzhuo£¨´úÂëÖ÷Ìå,Î´Íê´ıĞø...£©
+# nlg_yongzhuoæ”¯æŒçš„ç®—æ³•
     - text_summary
         - nous_base
             - keyword
@@ -19,9 +19,9 @@
             - NMF
 
 
-# run(ÔËĞĞ, ÒÔtextrankÎªÀı)
-    - 1. Ö±½Ó½øÈëÄ¿Â¼ÎÄ¼şÔËĞĞ¼´¿É, ÀıÈç½øÈë:nlg_yongzhuo/text_summary/graph_base/textrank/
-    - 2. ÔËĞĞ: python textrank_textrank4zh.py
+# run(è¿è¡Œ, æ˜“textrankä¸ºä¾‹)
+    - 1. è¿›å…¥ç›®å½•(cd):nlg_yongzhuo/text_summary/graph_base/textrank/
+    - 2. è¿è¡Œ: python textrank_textrank4zh.py
 
 
-*Ï£Íû¶ÔÄãÓĞËù°ïÖú!
+* å¸Œæœ›å¯¹ä½ æœ‰æ‰€å¸®åŠ©!

@@ -83,10 +83,10 @@ def text_summarize(doc, num=None, multi_process=False,
                    fs=[text_pronouns, text_teaser, mmr, text_rank, lead3, lda, lsi, nmf]):
     """
         抽取式文本摘要, 汇总, 使用几个方法
-    :param doc: 
-    :param num: 
-    :param multi_process: 
-    :return: 
+    :param doc: str or list, 用户输入
+    :param num: int, 返回的句子个数
+    :param multi_process: bool, 是否使用多进程
+    :return: res_score: list, sentences of doc with score
     """
     if type(doc)==list:
         doc = "。".join(doc)
@@ -119,10 +119,10 @@ if __name__ == '__main__':
           "具体说来就是，PageRank有两个基本思想，也可以说是假设。 " \
           "即数量假设：一个网页被越多的其他页面链接，就越重）。 " \
           "质量假设：一个网页越是被高质量的网页链接，就越重要。 " \
-          "总的来说就是一句话，从全局角度考虑，获取重要的信。 """
+          "总的来说就是一句话，从全局角度考虑，获取重要的信。 """.replace(" ", "").replace('"', '')
 
     # fs可以填其中一个或几个 text_pronouns, text_teaser, mmr, text_rank, lead3, lda, lsi, nmf
-    res_score = text_summarize(doc, fs=[text_pronouns, text_teaser, mmr, text_rank, lead3, lda, lsi, nmf])
+    res_score = text_summarize(doc, multi_process=True, fs=[text_pronouns, text_teaser, mmr, text_rank, lead3, lda, lsi, nmf])
     for rs in res_score:
         print(rs)
 

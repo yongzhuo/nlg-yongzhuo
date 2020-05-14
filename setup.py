@@ -2,7 +2,7 @@
 # !/usr/bin/python
 # @time     :2019/11/01 10:17
 # @author   :Mo
-# @function :setup of Keras-TextClassification
+# @function :setup of nlg-yongzhuo
 # @codes    :copy reference from https://github.com/TianWenQAQ/Kashgari/blob/master/setup.py
 
 
@@ -13,7 +13,8 @@ import codecs
 
 # Package meta-data.
 NAME = 'nlg-yongzhuo'
-DESCRIPTION = 'nlg of keras'
+DESCRIPTION = 'text-summarization of extractive, ' \
+              'include text_pronouns, text_teaser, mmr, text_rank, lead3, lda, lsi, nmf'
 URL = 'https://github.com/yongzhuo/nlg-yongzhuo'
 EMAIL = '1903865025@qq.com'
 AUTHOR = 'yongzhuo'
@@ -25,7 +26,7 @@ with codecs.open('requirements.txt', 'r', 'utf8') as reader:
     install_requires = list(map(lambda x: x.strip(), reader.readlines()))
 
 setup(name=NAME,
-        version='0.0.3',
+        version='0.0.4',
         description=DESCRIPTION,
         long_description=long_description,
         long_description_content_type="text/markdown",

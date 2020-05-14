@@ -31,7 +31,7 @@ doc = """PageRank算法简介。" \
               "具体说来就是，PageRank有两个基本思想，也可以说是假设。 " \
               "即数量假设：一个网页被越多的其他页面链接，就越重）。 " \
               "质量假设：一个网页越是被高质量的网页链接，就越重要。 " \
-              "总的来说就是一句话，从全局角度考虑，获取重要的信。 """
+              "总的来说就是一句话，从全局角度考虑，获取重要的信。 """.replace(" ", "").replace('"', '')
 
 # fs可以填其中一个或几个 text_pronouns, text_teaser, mmr, text_rank, lead3, lda, lsi, nmf
 res_score = text_summarize(doc, fs=[text_pronouns, text_teaser, mmr, text_rank, lead3, lda, lsi, nmf])

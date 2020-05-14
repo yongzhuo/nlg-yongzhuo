@@ -61,8 +61,9 @@ class TextrankGensimSum:
             sentences_score = {}
             for cor in corpus:
                 tuple_cor = tuple(cor)
-                sentences_score[sentences[count]] = most_important_docs[tuple_cor]
-                count += 1
+                if tuple_cor in most_important_docs:
+                    sentences_score[sentences[count]] = most_important_docs[tuple_cor]
+                    count += 1
             # 最小句子数
             num_min = min(num, len(sentences))
             score_sen = [(rc[1], rc[0]) for rc in sorted(sentences_score.items(),
