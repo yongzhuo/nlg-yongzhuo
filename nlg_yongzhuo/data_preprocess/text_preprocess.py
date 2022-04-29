@@ -190,17 +190,24 @@ def tfidf_fit(sentences):
     :param sentences: 
     :return: 
     """
-    # tfidf计算
-    model = TfidfVectorizer(ngram_range=(1, 2), # 3,5
-                            stop_words=[' ', '\t', '\n'],  # 停用词
-                            max_features=10000,
-                            token_pattern=r"(?u)\b\w+\b",  # 过滤停用词
-                            min_df=1,
-                            max_df=0.9,
-                            use_idf=1,  # 光滑
-                            smooth_idf=1,  # 光滑
-                            sublinear_tf=1, )  # 光滑
-    matrix = model.fit_transform(sentences)
+    try:
+        # tfidf计算
+        model = TfidfVectorizer(ngram_range=(1, 2), # 3,5
+                                stop_words=[' ', '\t', '\n'],  # 停用词
+                                max_features=10000,
+                                token_pattern=r"(?u)\b\w+\b",  # 过滤停用词
+                                min_df=1,
+                                max_df=0.9,
+                                use_idf=1,  # 光滑
+                                smooth_idf=1,  # 光滑
+                                sublinear_tf=1, )  # 光滑
+        matrix = model.fit_transform(sentences)
+    except Exception as e:
+        model = TfidfVectorizer(ngram_range=(1, 2),  # 3,5
+                                stop_words=[' ', '\t', '\n'],  # 停用词
+                                max_features=10000,
+                                )
+        matrix = model.fit_transform(sentences)
     return matrix
 
 
