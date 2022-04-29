@@ -5,7 +5,7 @@
 # @function :topic model of NMF
 
 
-from nlg_yongzhuo.data_preprocess.text_preprocess import extract_chinese
+from nlg_yongzhuo.data_preprocess.text_preprocess import extract_chinese, tfidf_fit
 from nlg_yongzhuo.data_preprocess.text_preprocess import cut_sentence
 from nlg_yongzhuo.data_preprocess.text_preprocess import jieba_cut
 from nlg_yongzhuo.data.stop_words.stop_words import stop_words
@@ -13,26 +13,6 @@ from nlg_yongzhuo.data.stop_words.stop_words import stop_words
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.decomposition import NMF
 import numpy as np
-
-
-def tfidf_fit(sentences):
-    """
-       tfidf相似度
-    :param sentences: 
-    :return: 
-    """
-    # tfidf计算
-    model = TfidfVectorizer(ngram_range=(1, 2),  # 3,5
-                            stop_words=[' ', '\t', '\n'],  # 停用词
-                            max_features=10000,
-                            token_pattern=r"(?u)\b\w+\b",  # 过滤停用词
-                            min_df=1,
-                            max_df=0.9,
-                            use_idf=1,  # 光滑
-                            smooth_idf=1,  # 光滑
-                            sublinear_tf=1, )  # 光滑
-    matrix = model.fit_transform(sentences)
-    return matrix
 
 
 class NMFSum:
@@ -66,7 +46,8 @@ class NMFSum:
         # 计算每个句子的tfidf
         sen_tfidf = tfidf_fit(self.sentences_cut)
         # 主题数, 经验判断
-        topic_num = min(topic_min, int(len(sentences_cut) / 2))  # 设定最小主题数为3
+        #         topic_num = min(topic_min, int(len(sentences_cut) / 2))  # 设定最小主题数为3
+        topic_num = max(1, min(topic_min, int(len(sentences_cut) / 2)))  # 设定最小主题数为3
         nmf_tfidf = NMF(n_components=topic_num, max_iter=320)
         res_nmf_w = nmf_tfidf.fit_transform(sen_tfidf.T) # 基矩阵 or 权重矩阵
         res_nmf_h = nmf_tfidf.components_                # 系数矩阵 or 降维矩阵
