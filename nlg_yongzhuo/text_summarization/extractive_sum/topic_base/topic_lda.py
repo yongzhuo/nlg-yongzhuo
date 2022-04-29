@@ -45,7 +45,8 @@ class LDASum:
         vector_c = CountVectorizer(ngram_range=(1, 2), stop_words=self.stop_words)
         tf_ngram = vector_c.fit_transform(self.sentences_cut)
         # 主题数, 经验判断
-        topic_num = min(topic_min, int(len(sentences_cut) / 2))  # 设定最小主题数为3
+#         topic_num = min(topic_min, int(len(sentences_cut) / 2))  # 设定最小主题数为3
+        topic_num = max(1, min(topic_min, int(len(sentences_cut) / 2)))  # 设定最小主题数为3
         lda = LatentDirichletAllocation(n_components=topic_num, max_iter=32,
                                         learning_method='online',
                                         learning_offset=50.,
